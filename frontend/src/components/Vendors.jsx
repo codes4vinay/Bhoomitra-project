@@ -1,3 +1,4 @@
+import React from 'react'
 import { useState, useEffect } from 'react';
 import { ChevronDown, ChevronUp, Phone, MapPin, Wheat, User } from 'lucide-react';
 import Navbar from './Navbar';
