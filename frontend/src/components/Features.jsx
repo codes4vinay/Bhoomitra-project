@@ -1,3 +1,4 @@
+import React from 'react'
 import { Plane as Plant, ShoppingBag, Users2, BookOpen } from 'lucide-react';
 
 const Features = () => {
