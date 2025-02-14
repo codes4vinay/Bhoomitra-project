@@ -98,7 +98,7 @@ function Vendors() {
 
     useEffect(() => {
       // ✅ Ensure correct API URL
-      fetch("http://localhost:3000/api/crops")
+      fetch("https://bhoomitra-project-1.onrender.com//api/crops")
           .then(res => {
               if (!res.ok) throw new Error("Failed to fetch crops");
               return res.json();
@@ -115,7 +115,7 @@ function Vendors() {
               price: Number(cropData.price),
           };
   
-          const response = await fetch("http://localhost:3000/api/crops", { // ✅ Use full URL
+          const response = await fetch("https://bhoomitra-project-1.onrender.com//api/crops", { // ✅ Use full URL
               method: "POST",
               headers: {
                   "Content-Type": "application/json",
