@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact - Bhoomitra</title>
+    <link rel='stylesheet' href="contact.css">
+</head>
+<body>
+    <div class="navbar">
+        <div class="logo">Bhoomitra</div>
+        <div class="nav-items">
+            <a href="index.html">Home</a>
+            <a href="about.html">About</a>
+            <a href="services.html">Services</a>
+            <a href="contact.html">Contact</a>
+            <a href="signup.html">Signup</a>
+        </div>
+        <div class="menu-toggle" id="mobile-menu">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+        </div>
+    </div>
+    <div class="contact-container">
+        <form action="https://api.web3forms.com/submit" method="POST" class="contact-left">
+            <div class="contact-left-title">
+                <h2>Get in touch</h2>
+                <hr>
+            </div>
+            <input type="hidden" name="access_key" value="2d32c4d5-87d2-4168-b97e-1d3b689cb625">
+            <input type="text" name="name" placeholder="Your Name:" class="contact-inputs" required>
+            <input type="email" name="email" placeholder="Enter your Email:" class="contact-inputs" required>
+            <textarea name="message" placeholder="Your message:" class="contact-inputs" required></textarea>
+            <button type="submit">Submit <img src="arrow_icon.png"></button>
+        </form>
+        <div class="contact-right">
+            <img src="right_img.png">
+        </div>
+    </div>
+    <footer>
+        <div class="footer">
+            <div class="footer-items">
+                <div class="footer-item">
+                    <h3>Quick Links</h3>
+                    <a href="index.html">Home</a>
+                    <a href="services.html">Services</a>
+                    <a href="contact.html">Contact</a>
+                    <a href="signup.html">Signup</a>
+                </div>
+                <div class="footer-item">
+                    <h3>Services</h3>
+                    <a href="services.html">Weather Updates</a>
+                    <a href="services.html">Market Price Updates</a>
+                    <a href="services.html">Farming Guidance</a>
+                    <a href="services.html">Financial Services</a>
+                </div>
+                <div class="footer-item">
+                    <h3>Contact</h3>
+                    <a href="contact.html">Email</a>
+                    <a href="contact.html">Phone</a>
+                    <a href="contact.html">Address</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Bhoomitra. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+    <script>
+        const mobileMenu = document.getElementById('mobile-menu');
+        const navItems = document.querySelector('.nav-items');
+
+        mobileMenu.addEventListener('click', () => {
+            navItems.classList.toggle('active');
+        });
+    </script>
+</body>
+</html>

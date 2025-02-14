@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About - Bhoomitra</title>
+    <link rel="stylesheet" href="about.css">
+</head>
+<body>
+    <!-- Google Translate Element -->
+    <div id="google_translate_element"></div>
+
+    <script type="text/javascript">
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement({ pageLanguage: 'en', includedLanguages: 'hi,pa,en' }, 'google_translate_element');
+        }
+    </script>
+    <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+    <div class="container">
+        <div class="navbar">
+            <div class="logo">Bhoomitra</div>
+            <div class="nav-items">
+                <a href="index.html">Home</a>
+                <a href="services.html">Services</a>
+                <a href="contact.html">Contact</a>
+                <a href="signup.html">Signup</a>
+                <!-- Language Selector Dropdown -->
+                <div class="dropdown">
+                    <button class="dropbtn">Language</button>
+                    <div class="dropdown-content">
+                        <a href="#" onclick="changeLanguage('en')">English</a>
+                        <a href="#" onclick="changeLanguage('hi')">Hindi</a>
+                        <a href="#" onclick="changeLanguage('pa')">Punjabi</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="content">
+            <div class="leftSection">
+                <img src="image.png" alt="image" id="image">
+            </div>
+            <div class="rightSection">
+                <h1>About Bhoomitra</h1>
+                <p>Bhoomitra helps farmers to sell their crops and buy seeds, fertilizers, etc.</p>
+                <p>भूमित्र किसानों को अपनी फसल बेचने और बीज, उर्वरक आदि खरीदने में मदद करता है।</p>
+                <p>Provides weather updates and more.</p>
+                <p>मौसम अपडेट और अधिक प्रदान करता है।</p>
+                <p>Empowers farmers with technology and modern solutions.</p>
+                <p>किसानों को प्रौद्योगिकी और आधुनिक समाधानों से सशक्त बनाता है।</p>
+                <p>Offers expert farming guidance and market price updates.</p>
+                <p>विशेषज्ञ कृषि मार्गदर्शन और बाजार मूल्य अपडेट प्रदान करता है।</p>
+                <p>Connects farmers with buyers and suppliers.</p>
+                <p>किसानों को खरीदारों और आपूर्तिकर्ताओं से जोड़ता है।</p>
+                <p>Facilitates access to financial services and insurance.</p>
+                <p>वित्तीय सेवाओं और बीमा तक पहुंच की सुविधा प्रदान करता है।</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer">
+            <div class="footer-items">
+                <div class="footer-item">
+                    <h3>Quick Links</h3>
+                    <a href="index.html">Home</a>
+                    <a href="services.html">Services</a>
+                    <a href="contact.html">Contact</a>
+                    <a href="signup.html">Signup</a>
+                </div>
+                <div class="footer-item">
+                    <h3>Services</h3>
+                    <a href="services.html">Weather Updates</a>
+                    <a href="services.html">Market Price Updates</a>
+                    <a href="services.html">Farming Guidance</a>
+                    <a href="services.html">Financial Services</a>
+                </div>
+                <div class="footer-item">
+                    <h3>Contact</h3>
+                    <a href="contact.html">Email</a>
+                    <a href="contact.html">Phone</a>
+                    <a href="contact.html">Address</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Bhoomitra. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script type="text/javascript">
+        // Function to change the language based on user selection
+        function changeLanguage(lang) {
+            // Redirect to the current page with the selected language parameter
+            window.location.href = window.location.pathname + "?lang=" + lang;
+        }
+    </script>
+</body>
+</html>
