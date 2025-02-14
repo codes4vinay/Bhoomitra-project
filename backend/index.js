@@ -99,25 +99,25 @@ app.post("/send-alert", async (req, res) => {
     }
 });
 
-// Crop API Routes
-app.get("/api/crops", async (req, res) => {
-    try {
-        const crops = await Crop.find();
-        res.json(crops);
-    } catch (err) {
-        res.status(500).json({ message: err.message });
-    }
-});
+// // Crop API Routes
+// app.get("/api/crops", async (req, res) => {
+//     try {
+//         const crops = await Crop.find();
+//         res.json(crops);
+//     } catch (err) {
+//         res.status(500).json({ message: err.message });
+//     }
+// });
 
-app.post("/api/crops", async (req, res) => {
-    try {
-        const newCrop = new Crop(req.body);
-        const savedCrop = await newCrop.save();
-        res.status(201).json(savedCrop);
-    } catch (err) {
-        res.status(400).json({ message: err.message });
-    }
-});
+// app.post("/api/crops", async (req, res) => {
+//     try {
+//         const newCrop = new Crop(req.body);
+//         const savedCrop = await newCrop.save();
+//         res.status(201).json(savedCrop);
+//     } catch (err) {
+//         res.status(400).json({ message: err.message });
+//     }
+// });
 
 app.delete("/api/crops/:id", async (req, res) => {
     try {

@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { ChevronDown, ChevronUp, Phone, MapPin, Wheat, User } from 'lucide-react';
 import Navbar from './Navbar';
 import Footer from './Footer';
@@ -31,6 +31,9 @@ const initialCropListings = [
 ];
 
 function CropCard({ listing }) {
+
+
+
   const [isExpanded, setIsExpanded] = useState(false);
 
   return (
@@ -90,16 +93,48 @@ function CropCard({ listing }) {
 
 function Vendors() {
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [cropListings, setCropListings] = useState(initialCropListings);
+    const [cropListings, setCropListings] = useState([]); // Initialize as empty array
 
-  const handleSubmitCrop = (cropData) => {
-    const newCrop = {
-      ...cropData,
-      id: cropListings.length + 1,
-      quantity: `${cropData.quantity} tons`, // Ensure consistency with existing listings
-      price: Number(cropData.price) // Ensure price is a number
-    };
-    setCropListings([...cropListings, newCrop]);
+    useEffect(() => {
+      // ✅ Ensure correct API URL
+      fetch("http://localhost:8000/api/crops")
+          .then(res => {
+              if (!res.ok) throw new Error("Failed to fetch crops");
+              return res.json();
+          })
+          .then(data => setCropListings(data))
+          .catch(error => console.error("Error fetching crops:", error));
+  }, []);
+  
+  const handleSubmitCrop = async (cropData) => {
+      try {
+          const newCrop = {
+              ...cropData,
+              quantity: `${cropData.quantity} tons`,
+              price: Number(cropData.price),
+          };
+  
+          const response = await fetch("http://localhost:8000/api/crops", { // ✅ Use full URL
+              method: "POST",
+              headers: {
+                  "Content-Type": "application/json",
+              },
+              body: JSON.stringify(newCrop),
+          });
+  
+          if (!response.ok) {
+              const errorData = await response.json(); // Get error details
+              throw new Error(errorData.error || "Failed to add crop");
+          }
+  
+          const savedCrop = await response.json();
+          setCropListings([...cropListings, savedCrop]); // ✅ Update state
+          setIsModalOpen(false); // ✅ Close modal
+  
+      } catch (error) {
+          console.error("Error submitting crop:", error);
+          alert(error.message); // Show error to user
+      }
   };
 
   return (
