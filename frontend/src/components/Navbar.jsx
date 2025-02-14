@@ -19,7 +19,7 @@ const Navbar = () => {
     }, [darkMode]);
 
     return (
-        <nav className="bg-white dark:bg-gray-900 shadow-lg fixed w-full z-50">
+        <nav className="bg-white dark:bg-gray-900 shadow-lg w-full z-50">
             <div className="max-w-7xl mx-auto px-4">
                 <div className="flex justify-between h-16 items-center">
                     
@@ -36,7 +36,7 @@ const Navbar = () => {
                             { name: 'Store', icon: Store, path: '/store' },
                             { name: 'Vendors', icon: Users, path: '/vendors' },
                             { name: 'Experts', icon: GraduationCap, path: '/experts' },
-                            { name: 'Weather Update', icon: CloudSun, path: '/weather-update' }, 
+                            { name: 'Weather Update', icon: CloudSun, path: 'https://jazzy-sprinkles-727ae3.netlify.app/' }, 
                         ].map((item) => (
                             <Link
                                 key={item.name}
