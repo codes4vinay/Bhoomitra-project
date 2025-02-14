@@ -1,3 +1,4 @@
+import React from 'react'
 import { StrictMode } from 'react'
 import ReactDOM from 'react-dom/client'
 import { ClerkProvider } from '@clerk/clerk-react'  // ✅ Import ClerkProvider
