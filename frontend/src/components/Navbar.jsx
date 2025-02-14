@@ -1,3 +1,4 @@
+import React from 'react'
 import { Home, CloudSun, Store, Users, GraduationCap, Moon, Sun, User,Sprout } from 'lucide-react';
 import { useState, useEffect } from 'react';
 import { SignedIn, SignedOut, useClerk } from "@clerk/clerk-react";
