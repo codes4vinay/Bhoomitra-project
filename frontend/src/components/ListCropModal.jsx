@@ -1,3 +1,4 @@
+import React from 'react'
 import { useState } from 'react';
 import { X } from 'lucide-react';
 import PropTypes from 'prop-types';
