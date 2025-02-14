@@ -1,3 +1,4 @@
+import React from 'react'
 import { useState, useEffect, useRef } from "react";
 import { useClerk, useUser } from "@clerk/clerk-react";
 
