@@ -4,6 +4,7 @@ import Store from "./components/Store";
 import Vendors from "./components/Vendors";
 import Experts from "./components/Experts";
 import WeatherApp from "./components/WheatherUpdate";
+import Assistant from "./components/assistant/Assistant";
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
         <Route path="/vendors" element={<Vendors/>} />
         <Route path="/experts" element={<Experts />} />
         <Route path="/weather-update" element={<WeatherApp />} />
+        <Route path="/assistant" element={<Assistant />} />
       </Routes>
     </Router>
   );

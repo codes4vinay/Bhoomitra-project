@@ -2,7 +2,7 @@ import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 const Hero = () => {
-  
+  const navigate = useNavigate();
 
   return (
     <div className="relative h-screen">
@@ -25,7 +25,7 @@ const Hero = () => {
           
           
           
-          <button className="bg-green-600 hover:bg-green-700 text-white px-8 py-3 rounded-full text-lg transition-colors">
+          <button onClick={()=>navigate("./assistant")} className="bg-green-600 hover:bg-green-700 text-white px-8 py-3 rounded-full text-lg transition-colors">
             Get Started
           </button>
         </div>

@@ -95,7 +95,9 @@ function Vendors() {
   const handleSubmitCrop = (cropData) => {
     const newCrop = {
       ...cropData,
-      id: cropListings.length + 1
+      id: cropListings.length + 1,
+      quantity: `${cropData.quantity} tons`, // Ensure consistency with existing listings
+      price: Number(cropData.price) // Ensure price is a number
     };
     setCropListings([...cropListings, newCrop]);
   };
