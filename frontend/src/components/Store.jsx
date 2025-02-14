@@ -1,5 +1,5 @@
 "use client"
-
+import React from 'react'
 import { useState } from "react"
 import { Leaf, Droplet, Factory, ShoppingCart, X, Plus, Minus, Trash2, CreditCard, Truck } from "lucide-react"
 import Navbar from "./Navbar"
