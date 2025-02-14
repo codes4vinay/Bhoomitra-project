@@ -5,12 +5,14 @@ import Vendors from "./components/Vendors";
 import Experts from "./components/Experts";
 import WeatherApp from "./components/WheatherUpdate";
 import Assistant from "./components/assistant/Assistant";
+import Prediction from "./components/Prediction";
 
 function App() {
   return (
     <Router>
       <Routes>
-        <Route path="/" element={<Homepage/>} />
+        <Route path="/" element={<Homepage />} />
+        <Route path="/predict" element={<Prediction/>} />
         <Route path="/store" element={<Store/>} />
         <Route path="/vendors" element={<Vendors/>} />
         <Route path="/experts" element={<Experts />} />

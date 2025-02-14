@@ -1,4 +1,4 @@
-import { Home, CloudSun, Store, Users, GraduationCap, Moon, Sun, User } from 'lucide-react';
+import { Home, CloudSun, Store, Users, GraduationCap, Moon, Sun, User,Sprout } from 'lucide-react';
 import { useState, useEffect } from 'react';
 import { SignedIn, SignedOut, useClerk } from "@clerk/clerk-react";
 import CustomUserButton from "./CustomUserButton";
@@ -32,6 +32,7 @@ const Navbar = () => {
                     <div className="flex space-x-6 items-center">
                         {[
                             { name: 'Home', icon: Home, path: '/' },
+                            { name: 'Recommendation', icon: Sprout, path: '/predict' },
                             { name: 'Store', icon: Store, path: '/store' },
                             { name: 'Vendors', icon: Users, path: '/vendors' },
                             { name: 'Experts', icon: GraduationCap, path: '/experts' },
