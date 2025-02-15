@@ -26,15 +26,23 @@ const razorpayInstance = new Razorpay({
     key_secret: process.env.RAZORPAY_KEY_SECRET,
 });
 
-// ✅ Improved CORS Configuration
+// ✅ Robust CORS Handling
+const allowedOrigins = process.env.ALLOWED_ORIGINS?.split(",") || ["http://localhost:5173"];
 app.use(cors({
-    origin: process.env.FRONTEND_URL || "http://localhost:5173",
-    methods: "GET,POST,PUT,DELETE,OPTIONS",
-    allowedHeaders: "Content-Type,Authorization",
+    origin: (origin, callback) => {
+        if (!origin || allowedOrigins.includes(origin)) {
+            callback(null, true);
+        } else {
+            callback(new Error("Not allowed by CORS"));
+        }
+    },
+    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS", "PATCH"],
+    allowedHeaders: ["Content-Type", "Authorization", "X-Requested-With"],
+    exposedHeaders: ["Content-Length", "X-Kuma-Revision"],
     credentials: true
 }));
 
-// ✅ Explicitly handle preflight requests
+// Handle OPTIONS preflight requests globally
 app.options("*", cors());
 
 // Middleware
