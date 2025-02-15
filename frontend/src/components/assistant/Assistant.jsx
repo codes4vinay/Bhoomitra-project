@@ -1,4 +1,5 @@
-import { useState, React } from "react";
+import React from 'react'
+import { useState } from "react";
 import { Sprout, Send, Loader2 } from "lucide-react";
 import ReactMarkdown from "react-markdown";
 import Navbar from "../Navbar"; // Adjust path based on your file structure
