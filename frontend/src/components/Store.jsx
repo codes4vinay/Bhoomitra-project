@@ -91,7 +91,7 @@ function CheckoutForm({ total, onBack, onComplete }) {
         throw new Error("Razorpay SDK failed to load")
       }
   
-      const API_URL = import.meta.env.VITE_API_URL || 'https://bhoomitra-project-1.onrender.com'
+      const API_URL = 'https://bhoomitra-project-1.onrender.com'
       
       const response = await fetch(`${API_URL}/api/create-order`, {
         method: "POST",
