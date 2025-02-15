@@ -96,16 +96,19 @@ function Vendors() {
   const [isModalOpen, setIsModalOpen] = useState(false);
     const [cropListings, setCropListings] = useState([]); // Initialize as empty array
 
-    useEffect(() => {
-      // ✅ Ensure correct API URL
-      fetch("https://bhoomitra-project-1.onrender.com/api/crops")
-          .then(res => {
-              if (!res.ok) throw new Error("Failed to fetch crops");
-              return res.json();
-          })
-          .then(data => setCropListings(data))
-          .catch(error => console.error("Error fetching crops:", error));
-  }, []);
+useEffect(() => {
+  fetch("https://bhoomitra-project-1.onrender.com/api/crops")
+    .then(res => {
+      if (!res.ok) throw new Error("Failed to fetch crops");
+      return res.json();
+    })
+    .then(data => {
+      console.log("Fetched crops:", data); // Debugging output
+      setCropListings(data);
+    })
+    .catch(error => console.error("Error fetching crops:", error));
+}, []);
+
   
   const handleSubmitCrop = async (cropData) => {
       try {
