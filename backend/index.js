@@ -5,6 +5,7 @@ import Razorpay from "razorpay";
 import dotenv from "dotenv";
 import cors from "cors";
 import bodyParser from "body-parser";
+import crypto from "crypto";
 import { GoogleGenerativeAI } from "@google/generative-ai";
 
 dotenv.config();
@@ -26,9 +27,7 @@ const razorpayInstance = new Razorpay({
 });
 
 // Middleware
-
 app.use(cors({ origin: process.env.FRONTEND_URL || "*", credentials: true }));
-
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
@@ -71,22 +70,6 @@ app.post("/generate", async (req, res) => {
     }
 });
 
-// Weather Alert Route
-app.post("/send-alert", async (req, res) => {
-    const { city, temp, condition } = req.body;
-    if (!city || temp === undefined || !condition) {
-        return res.status(400).json({ error: "Missing weather data" });
-    }
-    const message = `⚡ Weather Alert! Current weather in ${city}: ${temp}°C, Condition: ${condition}. Stay safe!`;
-    try {
-        await client.messages.create({ body: message, from: process.env.TWILIO_PHONE_NUMBER, to: process.env.ALERT_PHONE_NUMBER });
-        res.json({ message: "Weather alert sent successfully!" });
-    } catch (error) {
-        console.error("❌ Twilio Error:", error);
-        res.status(500).json({ error: "Failed to send alert via SMS" });
-    }
-});
-
 // Crop API Routes
 app.get("/api/crops", async (req, res) => {
     try {
@@ -99,11 +82,16 @@ app.get("/api/crops", async (req, res) => {
 
 app.post("/api/crops", async (req, res) => {
     try {
-        const newCrop = new Crop(req.body);
+        const { farmerName, contactNumber, cropName, quantity, price, location, description, image } = req.body;
+        if (!farmerName || !contactNumber || !cropName || !quantity || !price || !location || !description || !image) {
+            return res.status(400).json({ error: "All fields are required." });
+        }
+        const newCrop = new Crop({ farmerName, contactNumber, cropName, quantity, price, location, description, image });
         const savedCrop = await newCrop.save();
         res.status(201).json(savedCrop);
     } catch (err) {
-        res.status(400).json({ message: "Failed to save crop" });
+        console.error("❌ Failed to save crop:", err);
+        res.status(500).json({ error: "Internal Server Error", details: err.message });
     }
 });
 
@@ -116,42 +104,6 @@ app.delete("/api/crops/:id", async (req, res) => {
         res.json({ message: "Crop deleted successfully" });
     } catch (err) {
         res.status(500).json({ message: "Failed to delete crop" });
-    }
-});
-
-// Razorpay API Routes
-app.post("/api/create-order", async (req, res) => {
-    try {
-        const { amount, currency, receipt } = req.body;
-        if (!amount || amount <= 0) return res.status(400).json({ success: false, error: "Invalid amount" });
-        const order = await razorpayInstance.orders.create({
-            amount: Math.round(amount * 100),
-            currency: currency || "INR",
-            receipt: receipt || `receipt_${Date.now()}`,
-        });
-        res.json({ success: true, order });
-    } catch (error) {
-        console.error("Error creating order:", error);
-        res.status(500).json({ success: false, error: error.message });
-    }
-});
-
-app.post("/api/verify-payment", async (req, res) => {
-    try {
-        const { razorpay_order_id, razorpay_payment_id, razorpay_signature } = req.body;
-        if (!razorpay_order_id || !razorpay_payment_id || !razorpay_signature) {
-            return res.status(400).json({ success: false, message: "Missing payment verification parameters" });
-        }
-        const generatedSignature = crypto.createHmac("sha256", process.env.RAZORPAY_KEY_SECRET)
-            .update(razorpay_order_id + "|" + razorpay_payment_id)
-            .digest("hex");
-        if (generatedSignature === razorpay_signature) {
-            res.json({ success: true, message: "Payment verified successfully" });
-        } else {
-            res.status(400).json({ success: false, message: "Invalid payment signature" });
-        }
-    } catch (error) {
-        res.status(500).json({ success: false, error: error.message });
     }
 });
 
