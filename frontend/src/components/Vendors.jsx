@@ -9,23 +9,23 @@ import PropTypes from 'prop-types';
 const initialCropListings = [
   {
     id: 1,
-    farmerName: "John Smith",
-    contactNumber: "+1 (555) 123-4567",
+    farmerName: "Ramesh Singh",
+    contactNumber: "+91 5551234567",
     cropName: "Organic Wheat",
     quantity: "50 tons",
     price: 300,
-    location: "Lancaster County, PA",
+    location: "Ludhiana,Punjab",
     description: "Premium quality organic wheat, freshly harvested. Suitable for milling and baking. Available for bulk purchase.",
     image: "https://images.unsplash.com/photo-1574323347407-f5e1ad6d020b?auto=format&fit=crop&w=800&q=80"
   },
   {
     id: 2,
-    farmerName: "Maria Garcia",
-    contactNumber: "+1 (555) 234-5678",
+    farmerName: "Amit Patel",
+    contactNumber: "+91 5552345678",
     cropName: "Sweet Corn",
     quantity: "20 tons",
     price: 450,
-    location: "Iowa City, IA",
+    location: "Bhopal, Madhya Pradesh",
     description: "Fresh sweet corn harvested at peak ripeness. Perfect for immediate distribution. Wholesale buyers preferred.",
     image: "https://images.unsplash.com/photo-1551754655-cd27e38d2076?auto=format&fit=crop&w=800&q=80"
   }
@@ -108,6 +108,7 @@ useEffect(() => {
     })
     .catch(error => console.error("Error fetching crops:", error));
 }, []);
+  console.log(cropListings);
 
   
   const handleSubmitCrop = async (cropData) => {
@@ -147,7 +148,6 @@ useEffect(() => {
       <div className="min-h-screen bg-gray-100">
         <header className="bg-white shadow-sm">
           <div className="max-w-7xl mx-auto px-4 py-6">
-            <h1 className="text-3xl font-bold text-gray-900">Bhoomitra</h1>
             <p className="text-gray-600 mt-1 pt-4">Direct from Farmers to Buyers</p>
           </div>
         </header>
