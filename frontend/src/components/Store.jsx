@@ -8,17 +8,17 @@ import Footer from "./Footer"
 const products = [
   {
     id: 1,
-    name: "Organic Tomato Seeds",
-    price: 4.99,
-    vendor: "GreenThumb Seeds Co.",
-    description: "High-yield, disease-resistant tomato seeds perfect for home gardens.",
-    category: "seeds",
-    image: "https://images.unsplash.com/photo-1592921870789-04563d55041c?auto=format&fit=crop&w=800&q=80",
+    name: "Fungicide Spray",
+    price: 499,
+    vendor: "GreenThumb",
+    description: "Broad-spectrum fungicide for various plant diseases.",
+    category: "pesticides",
+    image: "https://images.unsplash.com/photo-1558583055-d7ac00b1adca?auto=format&fit=crop&w=800&q=80",
   },
   {
     id: 2,
     name: "Natural Pest Control Spray",
-    price: 19.99,
+    price: 1999,
     vendor: "EcoPest Solutions",
     description: "Eco-friendly pest control solution safe for organic farming.",
     category: "pesticides",
@@ -27,7 +27,7 @@ const products = [
   {
     id: 3,
     name: "Premium NPK Fertilizer",
-    price: 29.99,
+    price: 299,
     vendor: "FertileCare Inc.",
     description: "Balanced NPK formula for optimal plant growth and development.",
     category: "fertilizers",
@@ -36,7 +36,7 @@ const products = [
   {
     id: 4,
     name: "Heirloom Carrot Seeds",
-    price: 3.99,
+    price: 39,
     vendor: "Heritage Seeds",
     description: "Traditional variety known for exceptional taste and color.",
     category: "seeds",
@@ -45,7 +45,7 @@ const products = [
   {
     id: 5,
     name: "Organic Fertilizer Pellets",
-    price: 24.99,
+    price: 499,
     vendor: "OrganicGrow",
     description: "100% organic slow-release fertilizer for sustained nutrition.",
     category: "fertilizers",
@@ -54,7 +54,7 @@ const products = [
   {
     id: 6,
     name: "Fungicide Spray",
-    price: 15.99,
+    price: 599,
     vendor: "PlantProtect",
     description: "Broad-spectrum fungicide for various plant diseases.",
     category: "pesticides",
@@ -91,7 +91,7 @@ function CheckoutForm({ total, onBack, onComplete }) {
         throw new Error("Razorpay SDK failed to load")
       }
   
-      const API_URL = 'https://bhoomitra-project-1.onrender.com'
+      const API_URL = import.meta.env.VITE_API_URL || 'https://bhoomitra-project-1.onrender.com'
       
       const response = await fetch(`${API_URL}/api/create-order`, {
         method: "POST",
@@ -601,7 +601,6 @@ function Store() {
           <div className="max-w-7xl mx-auto px-4 py-6">
             <div className="flex justify-between items-center">
               <div>
-                <h1 className="text-3xl font-bold text-gray-900">Bhoomitra</h1>
                 <p className="text-gray-600 mt-1">Your One-Stop Shop for Agricultural Supplies</p>
               </div>
               <button onClick={toggleCart} className="relative p-2 text-gray-600 hover:text-gray-900">
