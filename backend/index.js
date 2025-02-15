@@ -26,7 +26,9 @@ const razorpayInstance = new Razorpay({
 });
 
 // Middleware
-app.use(cors({ origin: process.env.FRONTEND_URL || "https://bhoomitra-project-2.onrender.com/", credentials: true }));
+
+app.use(cors({ origin: process.env.FRONTEND_URL || "*", credentials: true }));
+
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
